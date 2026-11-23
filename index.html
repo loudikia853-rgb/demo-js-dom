@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Démo — DOM et événements</title>
+  <!-- STYLE_PLACEHOLDER -->
+</head>
+<body>
+  <header>
+    <h1 id="titre">Titre initial — JavaScript &amp; DOM</h1>
+    <p>Une seule page, cinq interactions.</p>
+  </header>
+
+  <main>
+    <section class="carte" id="carte-titre">
+      <h2>1 &amp; 2 — Contenu et style</h2>
+      <button id="btn-titre" type="button">Changer le titre</button>
+      <button id="btn-couleur" type="button">Changer la couleur</button>
+    </section>
+
+    <section class="carte" id="carte-texte">
+      <h2>3 — Saisie en direct</h2>
+      <label for="saisie">Votre texte :</label>
+      <input id="saisie" type="text" placeholder="Écrivez ici…">
+      <p id="affichage">Le texte apparaîtra ici.</p>
+    </section>
+
+    <section class="carte" id="carte-compteur">
+      <h2>4 — Compteur</h2>
+      <p>Nombre de clics : <strong id="compteur">0</strong></p>
+      <button id="btn-compteur" type="button">Cliquez-moi</button>
+    </section>
+
+    <section class="carte" id="carte-form">
+      <h2>5 — Validation de formulaire</h2>
+      <form id="formulaire" novalidate>
+        <label for="nom">Nom :</label>
+        <input id="nom" name="nom" type="text" placeholder="Votre nom">
+        <label for="email">E-mail :</label>
+        <input id="email" name="email" type="email" placeholder="nom@exemple.com">
+        <button type="submit">Valider</button>
+      </form>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section class="carte">
+      <h2>Événements bonus</h2>
+      <label for="theme">Thème (change) :</label>
+      <select id="theme">
+        <option value="clair">Clair</option>
+        <option value="nuit">Nuit</option>
+      </select>
+      <p id="indice">Survolez la carte du compteur (mouseover).</p>
+    </section>
+  </main>
+
+  <footer>Projet versionné avec Git — 3 commits — voir <code>git log --oneline --graph</code></footer>
+  <!-- SCRIPT_PLACEHOLDER -->
+</body>
+</html>
