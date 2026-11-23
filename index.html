@@ -9,8 +9,7 @@
     body.nuit{--bg:#0f172a;--fg:#e2e8f0;--card:#1e293b;--accent:#38bdf8;--border:#475569}
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:1.5rem}
-    header,footer{text-align:center;margin-bottom:1.2rem}
-    footer{margin-top:1.5rem;font-size:.85rem;opacity:.75}
+    header{text-align:center;margin-bottom:1.2rem}
     main{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:1000px;margin:auto}
     .carte{background:var(--card);border:1px solid var(--border);border-radius:.7rem;padding:1rem}
     h1{color:var(--accent)}
@@ -24,36 +23,36 @@
 </head>
 <body>
   <header>
-    <h1 id="titre">Titre initial — JavaScript &amp; DOM</h1>
-    <p>Une seule page, cinq interactions.</p>
+    <h1 id="titre">Tableau de bord</h1>
+    <p>ABDERRAHMANE LOUDIKI · S5 IA</p>
   </header>
 
   <main>
     <section class="carte" id="carte-titre">
-      <h2>1 &amp; 2 — Contenu et style</h2>
-      <button id="btn-titre" type="button">Changer le titre</button>
-      <button id="btn-couleur" type="button">Changer la couleur</button>
+      <h2>Apparence</h2>
+      <button id="btn-titre" type="button">Modifier le titre</button>
+      <button id="btn-couleur" type="button">Basculer le thème</button>
     </section>
 
     <section class="carte" id="carte-texte">
-      <h2>3 — Saisie en direct</h2>
-      <label for="saisie">Votre texte :</label>
+      <h2>Saisie</h2>
+      <label for="saisie">Votre texte</label>
       <input id="saisie" type="text" placeholder="Écrivez ici…">
-      <p id="affichage">Le texte apparaîtra ici.</p>
+      <p id="affichage">Aucun texte saisi.</p>
     </section>
 
     <section class="carte" id="carte-compteur">
-      <h2>4 — Compteur</h2>
+      <h2>Compteur</h2>
       <p>Nombre de clics : <strong id="compteur">0</strong></p>
       <button id="btn-compteur" type="button">Cliquez-moi</button>
     </section>
 
     <section class="carte" id="carte-form">
-      <h2>5 — Validation de formulaire</h2>
+      <h2>Inscription</h2>
       <form id="formulaire" novalidate>
-        <label for="nom">Nom :</label>
+        <label for="nom">Nom</label>
         <input id="nom" name="nom" type="text" placeholder="Votre nom">
-        <label for="email">E-mail :</label>
+        <label for="email">E-mail</label>
         <input id="email" name="email" type="email" placeholder="nom@exemple.com">
         <button type="submit">Valider</button>
       </form>
@@ -61,17 +60,58 @@
     </section>
 
     <section class="carte">
-      <h2>Événements bonus</h2>
-      <label for="theme">Thème (change) :</label>
+      <h2>Préférences</h2>
+      <label for="theme">Thème</label>
       <select id="theme">
         <option value="clair">Clair</option>
         <option value="nuit">Nuit</option>
       </select>
-      <p id="indice">Survolez la carte du compteur (mouseover).</p>
+      <p id="indice">Survolez la carte Compteur.</p>
     </section>
   </main>
 
-  <footer>Projet versionné avec Git — 3 commits — voir <code>git log --oneline --graph</code></footer>
-  <!-- SCRIPT_PLACEHOLDER -->
+  <script>
+    const $ = id => document.getElementById(id);
+    let clics = 0;
+
+    $('btn-titre').addEventListener('click', () => {
+      $('titre').textContent = 'Tableau de bord mis à jour';
+    });
+
+    $('btn-couleur').addEventListener('click', () => {
+      const nuit = document.body.classList.toggle('nuit');
+      $('theme').value = nuit ? 'nuit' : 'clair';
+    });
+
+    $('saisie').addEventListener('input', e => {
+      $('affichage').textContent = e.target.value || 'Aucun texte saisi.';
+    });
+
+    $('theme').addEventListener('change', e => {
+      document.body.classList.toggle('nuit', e.target.value === 'nuit');
+    });
+
+    $('btn-compteur').addEventListener('click', () => {
+      $('compteur').textContent = ++clics;
+    });
+
+    $('carte-compteur').addEventListener('mouseover', () => {
+      $('indice').textContent = 'Survol détecté ✅';
+    });
+
+    $('formulaire').addEventListener('submit', e => {
+      e.preventDefault();
+      const nom = $('nom').value.trim();
+      const email = $('email').value.trim();
+      const msg = $('message');
+      if (nom.length < 2 || !email.includes('@') || !email.includes('.')) {
+        msg.textContent = 'Erreur : nom (2 caractères min.) et e-mail valide requis.';
+        msg.className = 'erreur';
+      } else {
+        msg.textContent = `Formulaire valide, merci ${nom} !`;
+        msg.className = 'succes';
+      }
+    });
+  </script>
 </body>
 </html>
