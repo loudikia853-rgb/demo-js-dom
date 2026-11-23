@@ -4,7 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Démo — DOM et événements</title>
-  <!-- STYLE_PLACEHOLDER -->
+  <style>
+    :root{--bg:#f1f5f9;--fg:#0f172a;--card:#fff;--accent:#0284c7;--border:#cbd5e1}
+    body.nuit{--bg:#0f172a;--fg:#e2e8f0;--card:#1e293b;--accent:#38bdf8;--border:#475569}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:1.5rem}
+    header,footer{text-align:center;margin-bottom:1.2rem}
+    footer{margin-top:1.5rem;font-size:.85rem;opacity:.75}
+    main{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:1000px;margin:auto}
+    .carte{background:var(--card);border:1px solid var(--border);border-radius:.7rem;padding:1rem}
+    h1{color:var(--accent)}
+    h2{font-size:1.05rem;margin-top:0}
+    input,select,button{font:inherit;padding:.4rem .6rem;border:1px solid var(--border);border-radius:.35rem;margin:.25rem 0}
+    input,select{display:block;width:100%;background:var(--card);color:var(--fg)}
+    button{background:var(--accent);color:#fff;border:0;cursor:pointer}
+    #affichage,#message,#indice{font-weight:600;color:var(--accent)}
+    .erreur{color:#dc2626}.succes{color:#16a34a}
+  </style>
 </head>
 <body>
   <header>
